@@ -88,7 +88,7 @@ img:
 #        - If you have setup your custom font-family, don't forget to add style tag with @font-face or link.tag with font css
 #          to /source/data/head.yml as custom code, to load custom font files.
 fonts:
-    family: Monda
+    family: Raleway, Helvetica, 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
     use: catnet
     custom_font_host:
 
