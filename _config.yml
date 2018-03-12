@@ -70,10 +70,10 @@ background:
 
 # Images Settings
 img:
-    logo: "https://upload-images.jianshu.io/upload_images/2133488-8e0c6349a6004e5e.png"
-    avatar: "https://upload-images.jianshu.io/upload_images/2133488-9cf5109c2d59a64a.jpg"
-    daily_pic: "https://upload-images.jianshu.io/upload_images/2133488-61c30a850dffdcd9.jpg"
-    sidebar_header: "https://upload-images.jianshu.io/upload_images/2133488-a2ec6b5d8fb8e0c9.jpg"
+    logo: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/logo.png"
+    avatar: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/avatar.jpg"
+    daily_pic: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/daily_pic.jpg"
+    sidebar_header: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/sidebar_header.jpg"
     random_thumbnail: "/img/random/material-"
     footer_image:
         #upyun_logo:
@@ -302,7 +302,7 @@ vendors:
 #   The new src will have the base domain you configured below.
 #   For example
 #       materialcdn: https://cdn.jsdelivr.net/npm/hexo-material@1.4.0/source
-    materialcdn: https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.5/source
+    materialcdn: https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source
 # Third party library
 #   You can load these files from public cdn.
 #   For example
