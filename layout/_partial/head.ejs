@@ -27,7 +27,6 @@
     <!-- Title -->
     <%
         var title = page.title;
-
         if (is_archive()) {
             title = __('sidebar.archive');
 
@@ -47,7 +46,7 @@
     %>
     <title>
         <% if (title) { %>
-            <%= title + ' | ' %>
+            <%= title + ' · ' %>
         <% } %>
         <%= config.title %>
     </title>
@@ -171,7 +170,7 @@
     <% if( (page.current === 1) && (is_home()) ) { %>
         <link rel="canonical" href="<%- config.url %>" />
     <% } else { %>
-        <link rel="canonical" href="<%- config.url + url_for(path) %>" />
+        <link rel="canonical" href="<%- config.url + url_for(path).slice(0, -10) %>" />
     <% } %>
 
     <!-- Structured-data for SEO -->
