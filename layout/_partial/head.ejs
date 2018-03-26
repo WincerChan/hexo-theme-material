@@ -37,6 +37,11 @@
                 title += ': ' + page.year;
             }
         }
+        else if (is_home()) {
+            if (page.current > 1) {
+                title = page.current
+            }
+        }
         else if (is_category()) {
             title = __('title.category') + ': ' + page.category;
         }
@@ -172,7 +177,6 @@
     <% } else { %>
         <link rel="canonical" href="<%- config.url + url_for(path).slice(0, -10) %>" />
     <% } %>
-
     <!-- Structured-data for SEO -->
     <% if(theme.head.structured_data === true) { %>
         <%- partial('_partial/structured-data') %>
