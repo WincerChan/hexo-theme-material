@@ -4,7 +4,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             <% for (var i in theme.sidebar.dropdown) { %>
                 <li>
-                    <a href="<%= theme.sidebar.dropdown[i].link %>" target="_blank" title="<%= i %>">
+                    <a class="obfus" href="<%= theme.sidebar.dropdown[i].link %>" target="_blank" title="<%= i %>">
                         <% if(theme.sidebar.dropdown[i].icon) { %>
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element"><%= theme.sidebar.dropdown[i].icon %></i>
                         <% } %>
@@ -110,3 +110,10 @@
         <% } %>
     <% } %>
 </ul>
+<script>
+let e = document.querySelectorAll('.obfus');
+	console.log(e);
+	e.forEach(element => {
+		element.href = atob("bWFpbHRvOldpbmNlckNoYW5AZ21haWwuY29t");
+	});
+</script>
