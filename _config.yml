@@ -185,7 +185,7 @@ sns_share:
 sidebar:
     dropdown:
         Email Me:
-            link: "kissmyass"
+            link: ""
             icon: email
     homepage:
         use: true
