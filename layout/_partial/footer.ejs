@@ -6,7 +6,7 @@
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©<% if(theme.copyright_since) { %>&nbsp;<%= theme.copyright_since %>&nbsp;-<% } %><script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script><%- config.title %>
+            Copyright&nbsp;©<% if(theme.copyright_since) { %>&nbsp;<%= theme.copyright_since %>&nbsp;-<% } %><%- config.title %>
             <% if(theme.footer_text) { %>
                 <br>
                 <% if(Array.isArray(theme.footer_text)) { %>
@@ -16,6 +16,9 @@
                 <% } %>
             <% } %>
         </div>
+        <script type="text/javascript">
+        document.querySelector('#copyright').innerText = `Copyright © 2017 - ${(new Date()).getFullYear()} Wincer's Blog`;
+        </script>
 
         <!-- Paradox Footer Right Section -->
 
