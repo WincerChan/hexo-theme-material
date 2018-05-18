@@ -26,11 +26,15 @@
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "mainEntityOfPage": "<%- config.url + url_for(path) %>",
-    "headline": "<%- page.title %>",
-    "datePublished": "<%= page.date %>",
-    "dateModified": "<%= page.updated %>",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "<%= config.title %>",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "<%= theme.head.favicon %>"
+        }
+    },
     "author": {
         "@type": "Person",
         "name": "<%= config.author %>",
@@ -40,16 +44,26 @@
         },
         "description": "<%- theme.uiux.slogan %>"
     },
-    "publisher": {
-        "@type": "Organization",
-        "name": "<%= config.title %>",
-        "logo": {
-            "@type":"ImageObject",
-            "url": "<%= theme.head.high_res_favicon %>"
-        }
+    "url": "<%- config.url + url_for(path).slice(0, -10) %>",
+    "headline": "<%- page.title %>",
+    "name": "<%- page.title %>",
+    "inLanguage": {
+        "@type": "Language",
+        "alternateName": "<%= config.language %>"
     },
+    "image": {
+        "@type": "ImageObject",
+        "url": "<%= page.thumbnail %>"
+    },
+    "datePublished": "<%= page.date %>",
+    "dateModified": "<%= page.updated %>",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "<%- config.url + url_for(path).slice(0, -10) %>"
+    },
+
     "keywords": "<% if(page.tags && page.tags.each) { page.tags.each(function(tag) { %><%- ',' + tag.name %><% })} %><%= theme.head.keywords %>",
-    "description": "<% if(page.description) { %><%= page.description %><% } else if(page.excerpt){ %><%= strip_html(page.excerpt).replace(/^s*/, '').replace(/s*$/, '') %><% } else if (config.description){ %><%= config.description %><% } %>",
+    "description": "<% if(page.description) { %><%= page.description %><% } else if(page.excerpt){ %><%= strip_html(page.excerpt).replace(/^s*/, '').replace(/s*$/, '') %><% } else if (config.description){ %><%= config.description %><% } %>"
 }
 </script>
 <% } %>
