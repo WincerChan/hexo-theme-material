@@ -42,6 +42,11 @@
                     <%- partial('_partial/import_js') %>
                 </main>
             </div>
+            <% if(theme.vendors.materialcdn) { %>
+                    <link rel="stylesheet" href="<%- theme.vendors.materialcdn + '/css/material-icons.css'%>">
+            <% } else { %>
+                <%- cssLsload({path:('css/material-icons.css'),key:'material_icons'}) %>
+            <% } %>
         </body>
     <% } %>
 </html>
