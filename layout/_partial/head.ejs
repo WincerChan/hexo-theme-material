@@ -208,4 +208,18 @@
 <script>$(document).ready(function(){function d(b){b&&c.attr("src",b);$("#DonateText,#donateBox").addClass("blur");e.fadeIn(300,function(b){c.addClass("showQR")})}var e=$("#QRBox"),c=$("#MainBox"),a=0;$("#donateBox>li").hide();a++;$("#BTC").show();$("#BTC").addClass("yc");a++;$("#LTC").show();$("#LTC").addClass("yc");a++;$("#PayPal a").attr("href","https://paypal.me/tivsae");$("#PayPal").show();0==a&&$("#WeChat").after('<div id="ps">\u5c1a\u672a\u5f00\u542f donate!</div>');$("#donateBox li,#donateBox li a").css("width",
 Math.ceil(74+74*(4-a)/a)+"px");$("#donateBox>#LTC, #BTC").click(function(b){$("#model-background").css({'display':'block'});document.documentElement.style.overflow='hidden';document.documentElement.style.height="100%";b=$(this).attr("id");"BTC"===b?d("/img/btcqr.png"):!0;"LTC"===b?d("/img/liteqr.png"):!0;var a=$("#title");"BTC"===b?(a.addClass("bitcoin"),a.text("3Mij5rZfu1sX4iXzbXHd4HQTrD8BTbf7VB")):"LTC"===b&&(a.addClass("litecoin"),a.text("MDekyA12Y8v9ScsSqe8sHoqBe7GGWxURc6"))});c.click(function(a){$("#model-background").css({'display':'none'});document.documentElement.style.overflow='';document.documentElement.style.height="";c.removeClass("showQR").addClass("hideQR");setTimeout(function(a){e.fadeOut(300,function(a){c.removeClass("hideQR")});$("#DonateText,#donateBox,#github").removeClass("blur")},600)})});</script>
 <% } %>
+<% if(page.mathrender === true) { %>
+<link href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" crossorigin="anonymous" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script>
+window.addEventListener('load', () => {
+    let wait_renders = document.querySelectorAll('.mathrender');
+    wait_renders.forEach(ele => {
+                katex.render(ele.innerText, ele, {
+                    throwOnError: true
+                })
+            })
+})
+</script>
+<% } %>
 </div>
