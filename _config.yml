@@ -212,6 +212,10 @@ sidebar:
             link: "/life/"
             icon: book
             divider: false
+        友链:
+            link: "/friends/"
+            icon: people
+            divider: false
         关于:
             link: "/about/"
             icon: person
