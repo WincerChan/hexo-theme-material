@@ -71,7 +71,7 @@ background:
 # Images Settings
 img:
     logo: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/logo.png"
-    avatar: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/avatar.jpg"
+    avatar: "https://ae01.alicdn.com/kf/HTB1DdGHXizxK1RjSspj763S.pXax.png"
     daily_pic: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/daily_pic.jpg"
     sidebar_header: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/sidebar_header.jpg"
     random_thumbnail: "/img/random/material-"
