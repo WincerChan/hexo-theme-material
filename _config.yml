@@ -70,10 +70,10 @@ background:
 
 # Images Settings
 img:
-    logo: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/logo.png"
+    logo: "https://ae01.alicdn.com/kf/HTB1ZYzlajnuK1RkSmFP763uzFXa1.png"
     avatar: "https://ae01.alicdn.com/kf/HTB1DdGHXizxK1RjSspj763S.pXax.png"
-    daily_pic: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/daily_pic.jpg"
-    sidebar_header: "https://cdn.jsdelivr.net/gh/wincerchan/hexo-theme-material@1.5.6/source/img/sidebar_header.jpg"
+    daily_pic: "https://ae01.alicdn.com/kf/HTB1MAe.aifrK1RjSspb7634pFXap.png"
+    sidebar_header: "https://ae01.alicdn.com/kf/HTB1_hPbaovrK1RjSszf760JNVXaq.png"
     random_thumbnail: "/img/random/material-"
     footer_image:
         #upyun_logo:
