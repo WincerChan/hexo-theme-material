@@ -51,7 +51,7 @@
     %>
     <title>
         <% if (title) { %>
-            <%= title + ' · ' %>
+        <%= title + ' · ' %>
         <% } %>
         <%= config.title %>
     </title>
@@ -60,7 +60,7 @@
     <link rel="icon shortcut" type="image/ico" href="<%= url_for(theme.head.favicon) %>">
     <link rel="icon" href="<%= url_for(theme.head.high_res_favicon) %>">
 
-    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="telephone=no" />
     <meta name="description" itemprop="description" content="<% if(page.description) { %><%= page.description %><% } else if(page.excerpt){ %><%= strip_html(page.excerpt).replace(/^s*/, '').replace(/s*$/, '') %><% } else if (config.description){ %><%= config.description %><% } %>">
     <meta name="keywords" content="<%= theme.head.keywords %><% if(page.tags && page.tags.each) { page.tags.each(function(tag) { %><%- ',' + tag.name %><% })} %>">
     <meta name="theme-color" content="<%= theme.uiux.android_chrome_color %>">
@@ -82,52 +82,52 @@
     <![endif]-->
 
     <!-- Import lsloader -->
-    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{}};lsloader.removeLS=function(b){try{localStorage.removeItem(b)}catch(a){}};lsloader.setLS=function(b,a){try{localStorage.setItem(b,a)}catch(c){}};lsloader.getLS=function(b){var a="";try{a=localStorage.getItem(b)}catch(c){a=""}return a};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{for(var b=[],a=0;a<localStorage.length;a++)b.push(localStorage.key(a));b.forEach(function(a){-1===lsloader.getLS(a).indexOf(versionString)&&lsloader.removeLS(a)})}catch(c){}};lsloader.clean();lsloader.load=function(b,a,c,e){"boolean"===typeof c&&(e=c,c=void 0);e=e||!1;c=c||function(){};var d;(d=this.getLS(b))&&-1===d.indexOf(versionString)?(this.removeLS(b),this.requestResource(b,a,c,e)):d?d.split(versionString)[0]!=a?(console.log("reload:"+a),this.removeLS(b),this.requestResource(b,a,c,e)):(d=d.split(versionString)[1],e?(this.jsRunSequence.push({name:b,code:d}),this.runjs(a,b,d)):(document.getElementById(b).appendChild(document.createTextNode(d)),c())):this.requestResource(b,a,c,e)};lsloader.requestResource=function(b,a,c,e){var d=this;e?this.iojs(a,b,function(a,b,c){d.setLS(b,a+versionString+c);d.runjs(a,b,c)}):this.iocss(a,b,function(c){document.getElementById(b).appendChild(document.createTextNode(c));d.setLS(b,a+versionString+c)},c)};lsloader.iojs=function(b,a,c){var e=this;e.jsRunSequence.push({name:a,code:""});try{var d=new XMLHttpRequest;d.open("get",b,!0);d.onreadystatechange=function(){4==d.readyState&&((200<=d.status&&300>d.status||304==d.status)&&""!=d.response?c(b,a,d.response):e.jsfallback(b,a))};d.send(null)}catch(f){e.jsfallback(b,a)}};lsloader.runjs=function(b,a,c){if(a&&c)for(var e in this.jsRunSequence)this.jsRunSequence[e].name==a&&(this.jsRunSequence[e].code=c);if(this.jsRunSequence[0]&&this.jsRunSequence[0].code&&"failed"!=this.jsRunSequence[0].status)b=document.createElement("script"),b.appendChild(document.createTextNode(this.jsRunSequence[0].code)),b.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(b),this.jsRunSequence.shift(),0<this.jsRunSequence.length&&this.runjs();else if(this.jsRunSequence[0]&&"failed"==this.jsRunSequence[0].status){var d=this;b=document.createElement("script");b.src=this.jsRunSequence[0].path;b.type="text/javascript";this.jsRunSequence[0].status="loading";b.onload=function(){d.jsRunSequence.shift();0<d.jsRunSequence.length&&d.runjs()};document.body.appendChild(b)}};lsloader.jsfallback=function(b,a){if(!this.jsnamemap[a]){this.jsnamemap[a]=a;for(var c in this.jsRunSequence)this.jsRunSequence[c].name==a&&(this.jsRunSequence[c].code="",this.jsRunSequence[c].status="failed",this.jsRunSequence[c].path=b);this.runjs()}};lsloader.cssfallback=function(b,a,c){this.cssnamemap[a]||(this.cssnamemap[a]=1,a=document.createElement("link"),a.type="text/css",a.href=b,a.rel="stylesheet",a.onload=a.onerror=c,b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b))};lsloader.runInlineScript=function(b,a){a=document.getElementById(a).innerText;this.jsRunSequence.push({name:b,code:a});this.runjs()}})();</script>
+    <script>(function () { window.lsloader = { jsRunSequence: [], jsnamemap: {}, cssnamemap: {} }; lsloader.removeLS = function (key) { try { localStorage.removeItem(key) } catch (e) { } }; lsloader.setLS = function (key, val) { try { localStorage.setItem(key, val) } catch (e) { } }lsloader.getLS = function (key) { var val = ''try { val = localStorage.getItem(key) } catch (e) { val = '' } return val }versionString = "/*" + (window.materialVersion || 'unknownVersion') + "*/"; lsloader.clean = function () { try { var keys = []; for (var i = 0; i < localStorage.length; i++) { keys.push(localStorage.key(i)) } keys.forEach(function (key) { var data = lsloader.getLS(key); if (window.oldVersion) { var remove = window.oldVersion.reduce(function (p, c) { return p || data.indexOf('/*' + c + '*/') !== -1 }, false)if (remove) { lsloader.removeLS(key) } } }) } catch (e) { } }lsloader.clean(); lsloader.load = function (jsname, jspath, cssonload, isJs) { if (typeof cssonload === 'boolean') { isJs = cssonload; cssonload = undefined } isJs = isJs || false; cssonload = cssonload || function () { }; var code; code = this.getLS(jsname); if (code && code.indexOf(versionString) === -1) { this.removeLS(jsname); this.requestResource(jsname, jspath, cssonload, isJs); return } if (code) { var versionNumber = code.split(versionString)[0]; if (versionNumber != jspath) { console.log("reload:" + jspath)this.removeLS(jsname); this.requestResource(jsname, jspath, cssonload, isJs); return } code = code.split(versionString)[1]; if (isJs) { this.jsRunSequence.push({ name: jsname, code: code })this.runjs(jspath, jsname, code) } else { document.getElementById(jsname).appendChild(document.createTextNode(code)); cssonload() } } else { this.requestResource(jsname, jspath, cssonload, isJs) } }; lsloader.requestResource = function (name, path, cssonload, isJs) { var that = this if (isJs) { this.iojs(path, name, function (path, name, code) { that.setLS(name, path + versionString + code)that.runjs(path, name, code) }) } else { this.iocss(path, name, function (code) { document.getElementById(name).appendChild(document.createTextNode(code)); that.setLS(name, path + versionString + code) }, cssonload) } }; lsloader.iojs = function (path, jsname, callback) { var that = this; that.jsRunSequence.push({ name: jsname, code: '' })try { var xhr = new XMLHttpRequest(); xhr.open("get", path, true); xhr.onreadystatechange = function () { if (xhr.readyState == 4) { if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) { if (xhr.response != '') { callback(path, jsname, xhr.response); return } } that.jsfallback(path, jsname) } }; xhr.send(null) } catch (e) { that.jsfallback(path, jsname) } }; lsloader.iocss = function (path, jsname, callback, cssonload) { var that = this; try { var xhr = new XMLHttpRequest(); xhr.open("get", path, true); xhr.onreadystatechange = function () { if (xhr.readyState == 4) { if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) { if (xhr.response != '') { callback(xhr.response); cssonload(); return } } that.cssfallback(path, jsname, cssonload) } }; xhr.send(null) } catch (e) { that.cssfallback(path, jsname, cssonload) } }; lsloader.iofonts = function (path, jsname, callback, cssonload) { var that = this; try { var xhr = new XMLHttpRequest(); xhr.open("get", path, true); xhr.onreadystatechange = function () { if (xhr.readyState == 4) { if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) { if (xhr.response != '') { callback(xhr.response); cssonload(); return } } that.cssfallback(path, jsname, cssonload) } }; xhr.send(null) } catch (e) { that.cssfallback(path, jsname, cssonload) } }; lsloader.runjs = function (path, name, code) { if (!!name && !!code) { for (var k in this.jsRunSequence) { if (this.jsRunSequence[k].name == name) { this.jsRunSequence[k].code = code } } } if (!!this.jsRunSequence[0] && !!this.jsRunSequence[0].code && this.jsRunSequence[0].status != 'failed') { var script = document.createElement('script'); script.appendChild(document.createTextNode(this.jsRunSequence[0].code)); script.type = 'text/javascript'; document.getElementsByTagName('head')[0].appendChild(script); this.jsRunSequence.shift(); if (this.jsRunSequence.length > 0) { this.runjs() } } else if (!!this.jsRunSequence[0] && this.jsRunSequence[0].status == 'failed') { var that = this; var script = document.createElement('script'); script.src = this.jsRunSequence[0].path; script.type = 'text/javascript'; this.jsRunSequence[0].status = 'loading'script.onload = function () { that.jsRunSequence.shift(); if (that.jsRunSequence.length > 0) { that.runjs() } }; document.body.appendChild(script) } }lsloader.tagLoad = function (path, name) { this.jsRunSequence.push({ name: name, code: '', path: path, status: 'failed' }); this.runjs() }lsloader.jsfallback = function (path, name) { if (!!this.jsnamemap[name]) { return } else { this.jsnamemap[name] = name } for (var k in this.jsRunSequence) { if (this.jsRunSequence[k].name == name) { this.jsRunSequence[k].code = ''; this.jsRunSequence[k].status = 'failed'; this.jsRunSequence[k].path = path } } this.runjs() }; lsloader.cssfallback = function (path, name, cssonload) { if (!!this.cssnamemap[name]) { return } else { this.cssnamemap[name] = 1 } var link = document.createElement('link'); link.type = 'text/css'; link.href = path; link.rel = 'stylesheet'; link.onload = link.onerror = cssonload; var root = document.getElementsByTagName('script')[0]; root.parentNode.insertBefore(link, root) }lsloader.runInlineScript = function (scriptId, codeId) { var code = document.getElementById(codeId).innerText; this.jsRunSequence.push({ name: scriptId, code: code })this.runjs() }lsloader.loadCombo = function (jslist) { var updateList = ''; var requestingModules = {}; for (var k in jslist) { var LS = this.getLS(jslist[k].name); if (!!LS) { var version = LS.split(versionString)[0]var code = LS.split(versionString)[1] } else { var version = '' } if (version == jslist[k].path) { this.jsRunSequence.push({ name: jslist[k].name, code: code, path: jslist[k].path }) } else { this.jsRunSequence.push({ name: jslist[k].name, code: null, path: jslist[k].path, status: 'comboloading' })requestingModules[jslist[k].name] = true; updateList += (updateList == '' ? '' : ';') + jslist[k].path } } var that = this; if (!!updateList) { var xhr = new XMLHttpRequest(); xhr.open("get", combo + updateList, true); xhr.onreadystatechange = function () { if (xhr.readyState == 4) { if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) { if (xhr.response != '') { that.runCombo(xhr.response, requestingModules); return } } else { for (var i in that.jsRunSequence) { if (requestingModules[that.jsRunSequence[i].name]) { that.jsRunSequence[i].status = 'failed' } } that.runjs() } } }; xhr.send(null) } this.runjs() }lsloader.runCombo = function (comboCode, requestingModules) { comboCode = comboCode.split('/*combojs*/'); comboCode.shift(); for (var k in this.jsRunSequence) { if (!!requestingModules[this.jsRunSequence[k].name] && !!comboCode[0]) { this.jsRunSequence[k].status = 'comboJS'; this.jsRunSequence[k].code = comboCode[0]; this.setLS(this.jsRunSequence[k].name, this.jsRunSequence[k].path + versionString + comboCode[0]); comboCode.shift() } } this.runjs() } })()</script>
     <!-- Import queue -->
-    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+    <script>function Queue() { this.dataStore = []; this.offer = b; this.poll = d; this.execNext = a; this.debug = false; this.startDebug = c; function b(e) { if (this.debug) { console.log("Offered a Queued Function.") } if (typeof e === "function") { this.dataStore.push(e) } else { console.log("You must offer a function.") } } function d() { if (this.debug) { console.log("Polled a Queued Function.") } return this.dataStore.shift() } function a() { var e = this.poll(); if (e !== undefined) { if (this.debug) { console.log("Run a Queued Function.") } e() } } function c() { this.debug = true } } var queue = new Queue();</script>
 
     <!-- Import CSS -->
     <% if(theme.vendors.materialcdn) { %>
 
-        <% if (theme.prettify.enable){ %>
-            <% if ( (is_post()) ) { %>
-                <%- cssLsload({path:(theme.vendors.materialcdn + '/css/prettify.min.css'),key:'prettify_css'}) %>
-                <%- cssLsload({path:(theme.vendors.materialcdn + '/css/prettify/' + theme.prettify.theme + '.min.css'),key:'prettify_theme'}) %>
-            <% } %>
-        <% } %>
+    <% if (theme.prettify.enable){ %>
+    <% if ( (is_post()) ) { %>
+    <%- cssLsload({path:(theme.vendors.materialcdn + '/css/prettify.min.css'),key:'prettify_css'}) %>
+    <%- cssLsload({path:(theme.vendors.materialcdn + '/css/prettify/' + theme.prettify.theme + '.min.css'),key:'prettify_theme'}) %>
+    <% } %>
+    <% } %>
 
     <% } else { %>
-        <%- cssLsload({path:('css/material.min.css'),key:'material_css'}) %>
-        <%- cssLsload({path:('css/style.min.css'),key:'style_css'}) %>
+    <%- cssLsload({path:('css/material.min.css'),key:'material_css'}) %>
+    <%- cssLsload({path:('css/style.min.css'),key:'style_css'}) %>
 
-        <% if (theme.prettify.enable){ %>
-            <% if ( (is_post()) ) { %>
-                <%- cssLsload({path:('css/prettify.min.css'),key:'prettify_css'}) %>
-                <%- cssLsload({path:('css/prettify/' + theme.prettify.theme + '.min.css'),key:'prettify_theme'}) %>
-            <% } %>
-        <% } %>
+    <% if (theme.prettify.enable){ %>
+    <% if ( (is_post()) ) { %>
+    <%- cssLsload({path:('css/prettify.min.css'),key:'prettify_css'}) %>
+    <%- cssLsload({path:('css/prettify/' + theme.prettify.theme + '.min.css'),key:'prettify_theme'}) %>
+    <% } %>
+    <% } %>
 
     <% } %>
 
     <% if(theme.scheme === 'Isolation') { %>
-        <% if(theme.vendors.fontawesome) { %>
-            <link rel="stylesheet" href="<%= theme.vendors.fontawesome %>">
-        <% } else if(theme.vendors.materialcdn) { %>
-            <link rel="stylesheet" href="<%= theme.vendors.materialcdn %>/css/fontawesome.min.css">
-        <% } else { %>
-            <link rel="stylesheet" href="<%= url_for('css/fontawesome.min.css') %>">
-        <% } %>
+    <% if(theme.vendors.fontawesome) { %>
+    <link rel="stylesheet" href="<%= theme.vendors.fontawesome %>">
+    <% } else if(theme.vendors.materialcdn) { %>
+    <link rel="stylesheet" href="<%= theme.vendors.materialcdn %>/css/fontawesome.min.css">
+    <% } else { %>
+    <link rel="stylesheet" href="<%= url_for('css/fontawesome.min.css') %>">
+    <% } %>
     <% } %>
 
     <%- partial('_partial/config_css') %>
 
     <!-- Import jQuery -->
     <% if(theme.vendors.jquery) { %>
-        <%- jsLsload({path:(theme.vendors.jquery),key:'jq_js'}) %>
+    <%- jsLsload({path:(theme.vendors.jquery),key:'jq_js'}) %>
     <% } else if(theme.vendors.materialcdn) { %>
-        <%- jsLsload({path:(theme.vendors.materialcdn + '/js/jquery.min.js'),key:'jq_js'}) %>
+    <%- jsLsload({path:(theme.vendors.materialcdn + '/js/jquery.min.js'),key:'jq_js'}) %>
     <% } else { %>
-        <%- jsLsload({path:('js/jquery.min.js'),key:'jq_js'}) %>
+    <%- jsLsload({path:('js/jquery.min.js'),key:'jq_js'}) %>
     <% } %>
 
     <!-- WebAPP Icons -->
@@ -141,17 +141,21 @@
     <link rel="apple-touch-icon" href="<%= url_for(theme.head.apple_touch_icon) %>">
 
     <!-- Site Verification -->
-    <% if(theme.head.site_verification.google) { %><meta name="google-site-verification" content="<%= theme.head.site_verification.google %>" /><% } %>
-    <% if(theme.head.site_verification.baidu) { %><meta name="baidu-site-verification" content="<%= theme.head.site_verification.baidu %>" /><% } %>
+    <% if(theme.head.site_verification.google) { %>
+    <meta name="google-site-verification" content="<%= theme.head.site_verification.google %>" />
+    <% } %>
+    <% if(theme.head.site_verification.baidu) { %>
+    <meta name="baidu-site-verification" content="<%= theme.head.site_verification.baidu %>" />
+    <% } %>
 
     <!-- RSS -->
     <% if(theme.url.rss) { %>
-        <% if(config.feed.type == "atom"){ %>
-            <link rel=alternate type="application/atom+xml" href="<%= theme.url.rss || '#' %>">
-        <% } else if(config.feed.type == "rss2") { %>
-            <link rel=alternate type="application/rss+xml" href="<%= theme.url.rss || '#' %>">
-        <% } else { %>
-        <% } %>
+    <% if(config.feed.type == "atom"){ %>
+    <link rel=alternate type="application/atom+xml" href="<%= theme.url.rss || '#' %>">
+    <% } else if(config.feed.type == "rss2") { %>
+    <link rel=alternate type="application/rss+xml" href="<%= theme.url.rss || '#' %>">
+    <% } else { %>
+    <% } %>
     <% } %>
 
     <!-- The Open Graph protocol -->
@@ -160,11 +164,13 @@
     <meta property="og:title" content="<% if (title) { %><%= title %> · <% } %><%= config.title %>">
     <meta property="og:image" content="<%= url_for(theme.head.high_res_favicon) %>">
     <meta property="og:description" content="<% if(page.description) { %><%= page.description %><% } else if(page.excerpt){ %><%= strip_html(page.excerpt).replace(/^s*/, '').replace(/s*$/, '') %><% } else if (config.description){ %><%= config.description %><% } %>">
-    <% if(page.tags && page.tags.each) { page.tags.each(function(tag){ %><meta property="og:article:tag" content="<%= tag.name %>"> <% })} %>
+    <% if(page.tags && page.tags.each) { page.tags.each(function(tag){ %>
+    <meta property="og:article:tag" content="<%= tag.name %>">
+    <% })} %>
 
     <% if( (is_post()) ) { %>
-        <meta property="article:published_time" content="<%= page.date %>">
-        <meta property="article:modified_time" content="<%= page.updated %>">
+    <meta property="article:published_time" content="<%= page.date %>">
+    <meta property="article:modified_time" content="<%= page.updated %>">
     <% } %>
 
     <!-- The Twitter Card protocol -->
@@ -172,54 +178,405 @@
 
     <!-- Add canonical link for SEO -->
     <% if( (page.current === 1) && (is_home()) ) { %>
-        <link rel="canonical" href="<%- config.url %>" />
+    <link rel="canonical" href="<%- config.url %>" />
     <% } else { %>
-        <link rel="canonical" href="<%- config.url + url_for(path).slice(0, -10) %>" />
+    <link rel="canonical" href="<%- config.url + url_for(path).slice(0, -10) %>" />
     <% } %>
     <!-- Structured-data for SEO -->
     <% if(theme.head.structured_data === true) { %>
-        <%- partial('_partial/structured-data') %>
+    <%- partial('_partial/structured-data') %>
     <% } %>
 
     <!-- Analytics -->
     <% if(theme.analytics.google_site_id) { %>
-        <%- partial('_widget/analytics/google-analytics') %>
+    <%- partial('_widget/analytics/google-analytics') %>
     <% } %>
     <% if(theme.analytics.baidu_site_id) { %>
-        <%- partial('_widget/analytics/baidu-analytics') %>
+    <%- partial('_widget/analytics/baidu-analytics') %>
     <% } %>
     <% if(theme.analytics.cnzz_site_id) { %>
-        <%- partial('_widget/analytics/cnzz-analytics') %>
+    <%- partial('_widget/analytics/cnzz-analytics') %>
     <% } %>
 
     <!-- Custom Head -->
     <% if (site.data.head) { %>
-        <% for (var i in site.data.head) { %>
-            <%- site.data.head[i] %>
-        <% } %>
+    <% for (var i in site.data.head) { %>
+    <%- site.data.head[i] %>
+    <% } %>
     <% } %>
 
 </head>
 
 
 <div>
-<% if(page.title === "关于") { %>
-<style>img{border-width:0}#donateBox>a{color:#000;text-decoration:none;outline:0;border:none}.list,.list li,.list-left li{list-style:none;list-style-type:none;margin:0;padding:0}.pos-f{position:relative}.left-100{width:100%;height:100%}.blur{-webkit-filter:blur(3px);filter:blur(3px)}.tr3{transition:all .3s}#DonateText{position:fixed;font-size:12px;width:70px;height:70px;line-height:70px;color:#fff;background:#ffd886 url(../img/like.svg) no-repeat center 10px;background-size:20px;border-radius:35px;text-align:center;left:calc(50% - 120px);top:calc(50% - 60px);z-index:-1;transform:rotatez(-15deg)}#donateBox{overflow:visible!important;left:calc(50% - 150px);top:calc(50% - 15px);background-color:#fff;border:1px solid #ddd;border-radius:6px;height:28px;float:left;z-index:1}#donateBox li{width:74px;float:right;font-size:0;text-align:center;border-left:1px solid #ddd;background:no-repeat center center;background-color:rgba(204,217,220,.1);background-size:55px;transition:all .3s;cursor:pointer;overflow:hidden;line-height:600px;height:28px;-webkit-filter:grayscale(1);filter:grayscale(1);opacity:.5}#donateBox li:hover{background-color:rgba(204,217,220,.3);-webkit-filter:grayscale(0);filter:grayscale(0);opacity:1}#donateBox a{display:block}#donateBox #PayPal{background-image:url(/img/paypal.svg)}#donateBox>#BTC{background-image:url(/img/bitcoin.svg);line-height:28px}#donateBox>#LTC{background-image:url(/img/litecoin.svg);line-height:28px}#donateBox>#BTC:hover{overflow:visible}#donateBox>#LTC:hover{overflow:visible}#donateBox>#PayPal:hover{overflow:visible}#BTC>button{opacity:0;cursor:pointer}#LTC>button{opacity:0;cursor:pointer}#QRBox{top:0;left:0;z-index:1;background-color:rgba(255,255,255,.3);display:none;perspective:400px}#MainBox{cursor:pointer;position:absolute;text-align:center;width:268px;height:268px;left:calc(50% - 134px);top:calc(50% - 134px);background:#fff no-repeat center center;background-size:190px;border-radius:6px;box-shadow:0 2px 7px rgba(0,0,0,.3);opacity:0;transition:all 1s ease-in-out;transform-style:preserve-3d;transform-origin:center center;overflow:hidden}#btc-key{opacity:0;width:2px;height:8px;overflow:hidden;left:-2px;top:-8px}#github{width:24px;height:24px;left:calc(50% + 135px);top:calc(50% - 30px);background:no-repeat center center url(../img/github.svg);background-size:contain;opacity:.3;transform:rotatez(15deg)}[data-footnote]{position:relative;overflow:hidden}[data-footnote]:hover{overflow:visible}[data-footnote]::after,[data-footnote]::before{position:absolute;transition:all .3s;transform:translate3d(-50%,0,0);opacity:0;left:37px;z-index:10}[data-footnote]::before{content:attr(data-footnote);border-radius:6px;background-color:rgba(100,100,100,.8);color:#fff;height:24px;line-height:24px;padding:0 6px;font-size:12px;white-space:nowrap;top:-24px;left:49px}[data-footnote]::after{content:'';border:5px solid #333;border-color:rgba(100,100,100,.8) transparent transparent transparent;top:0;left:49px}[data-footnote]:hover::after,[data-footnote]:hover::before{opacity:1}[data-footnote]:hover::after,[data-footnote]:hover::before{transform:translate3d(-50%,-7px,0)}#MainBox.showQR{opacity:1;animation-name:showQR;animation-duration:3s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:showQR 3s ease-in-out 0s 1 normal forwards}@keyframes showQR{from{transform:rotateX(90deg)}8%{opacity:1;transform:rotateX(-60deg)}18%{opacity:1;transform:rotateX(40deg)}34%{opacity:1;transform:rotateX(-28deg)}44%{opacity:1;transform:rotateX(18deg)}58%{opacity:1;transform:rotateX(-12deg)}72%{opacity:1;transform:rotateX(9deg)}88%{opacity:1;transform:rotateX(-5deg)}96%{opacity:1;transform:rotateX(2deg)}to{opacity:1}}#MainBox.hideQR{opacity:1;animation-name:hideQR;animation-duration:.5s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:hideQR .5s ease-in-out 0s 1 normal forwards}@keyframes hideQR{20%,50%{transform:scale(1.08,1.08);opacity:1}to{opacity:0;transform:rotateZ(40deg) scale(.6,.6)}}.bitcoin{position:absolute;top:calc(50% + 9rem);text-align:center;left:0;right:0}.litecoin{position:absolute;top:calc(50% + 9rem);text-align:center;left:0;right:0}#QRBox>#title{color:#969696;border-bottom:1px}#model-background{bottom:0;left:0;right:0;top:0;background-color:white;position:fixed;display:none}</style>
-<script>$(document).ready(function(){function d(b){b&&c.attr("src",b);$("#DonateText,#donateBox").addClass("blur");e.fadeIn(300,function(b){c.addClass("showQR")})}var e=$("#QRBox"),c=$("#MainBox"),a=0;$("#donateBox>li").hide();a++;$("#BTC").show();$("#BTC").addClass("yc");a++;$("#LTC").show();$("#LTC").addClass("yc");a++;$("#PayPal a").attr("href","https://paypal.me/tivsae");$("#PayPal").show();0==a&&$("#WeChat").after('<div id="ps">\u5c1a\u672a\u5f00\u542f donate!</div>');$("#donateBox li,#donateBox li a").css("width",
-Math.ceil(74+74*(4-a)/a)+"px");$("#donateBox>#LTC, #BTC").click(function(b){$("#model-background").css({'display':'block'});document.documentElement.style.overflow='hidden';document.documentElement.style.height="100%";b=$(this).attr("id");"BTC"===b?d("/img/btcqr.png"):!0;"LTC"===b?d("/img/liteqr.png"):!0;var a=$("#title");"BTC"===b?(a.addClass("bitcoin"),a.text("3Mij5rZfu1sX4iXzbXHd4HQTrD8BTbf7VB")):"LTC"===b&&(a.addClass("litecoin"),a.text("MDekyA12Y8v9ScsSqe8sHoqBe7GGWxURc6"))});c.click(function(a){$("#model-background").css({'display':'none'});document.documentElement.style.overflow='';document.documentElement.style.height="";c.removeClass("showQR").addClass("hideQR");setTimeout(function(a){e.fadeOut(300,function(a){c.removeClass("hideQR")});$("#DonateText,#donateBox,#github").removeClass("blur")},600)})});</script>
-<% } %>
-<% if(page.mathrender === true) { %>
-<link href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" crossorigin="anonymous" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" rel="stylesheet">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-<script>
-window.addEventListener('load', () => {
-    let wait_renders = document.querySelectorAll('.mathrender');
-    wait_renders.forEach(ele => {
+    <% if(page.title === "关于") { %>
+    <style>
+        img {
+            border-width: 0
+        }
+
+        #donateBox>a {
+            color: #000;
+            text-decoration: none;
+            outline: 0;
+            border: none
+        }
+
+        .list,
+        .list li,
+        .list-left li {
+            list-style: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .pos-f {
+            position: relative
+        }
+
+        .left-100 {
+            width: 100%;
+            height: 100%
+        }
+
+        .blur {
+            -webkit-filter: blur(3px);
+            filter: blur(3px)
+        }
+
+        .tr3 {
+            transition: all .3s
+        }
+
+        #DonateText {
+            position: fixed;
+            font-size: 12px;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            color: #fff;
+            background: #ffd886 url(../img/like.svg) no-repeat center 10px;
+            background-size: 20px;
+            border-radius: 35px;
+            text-align: center;
+            left: calc(50% - 120px);
+            top: calc(50% - 60px);
+            z-index: -1;
+            transform: rotatez(-15deg)
+        }
+
+        #donateBox {
+            overflow: visible !important;
+            left: calc(50% - 150px);
+            top: calc(50% - 15px);
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            height: 28px;
+            float: left;
+            z-index: 1
+        }
+
+        #donateBox li {
+            width: 74px;
+            float: right;
+            font-size: 0;
+            text-align: center;
+            border-left: 1px solid #ddd;
+            background: no-repeat center center;
+            background-color: rgba(204, 217, 220, .1);
+            background-size: 55px;
+            transition: all .3s;
+            cursor: pointer;
+            overflow: hidden;
+            line-height: 600px;
+            height: 28px;
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+            opacity: .5
+        }
+
+        #donateBox li:hover {
+            background-color: rgba(204, 217, 220, .3);
+            -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+            opacity: 1
+        }
+
+        #donateBox a {
+            display: block
+        }
+
+        #donateBox #PayPal {
+            background-image: url(/img/paypal.svg)
+        }
+
+        #donateBox>#BTC {
+            background-image: url(/img/bitcoin.svg);
+            line-height: 28px
+        }
+
+        #donateBox>#LTC {
+            background-image: url(/img/litecoin.svg);
+            line-height: 28px
+        }
+
+        #donateBox>#BTC:hover {
+            overflow: visible
+        }
+
+        #donateBox>#LTC:hover {
+            overflow: visible
+        }
+
+        #donateBox>#PayPal:hover {
+            overflow: visible
+        }
+
+        #BTC>button {
+            opacity: 0;
+            cursor: pointer
+        }
+
+        #LTC>button {
+            opacity: 0;
+            cursor: pointer
+        }
+
+        #QRBox {
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, .3);
+            display: none;
+            perspective: 400px
+        }
+
+        #MainBox {
+            cursor: pointer;
+            position: absolute;
+            text-align: center;
+            width: 268px;
+            height: 268px;
+            left: calc(50% - 134px);
+            top: calc(50% - 134px);
+            background: #fff no-repeat center center;
+            background-size: 190px;
+            border-radius: 6px;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, .3);
+            opacity: 0;
+            transition: all 1s ease-in-out;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+            overflow: hidden
+        }
+
+        #btc-key {
+            opacity: 0;
+            width: 2px;
+            height: 8px;
+            overflow: hidden;
+            left: -2px;
+            top: -8px
+        }
+
+        #github {
+            width: 24px;
+            height: 24px;
+            left: calc(50% + 135px);
+            top: calc(50% - 30px);
+            background: no-repeat center center url(../img/github.svg);
+            background-size: contain;
+            opacity: .3;
+            transform: rotatez(15deg)
+        }
+
+        [data-footnote] {
+            position: relative;
+            overflow: hidden
+        }
+
+        [data-footnote]:hover {
+            overflow: visible
+        }
+
+        [data-footnote]::after,
+        [data-footnote]::before {
+            position: absolute;
+            transition: all .3s;
+            transform: translate3d(-50%, 0, 0);
+            opacity: 0;
+            left: 37px;
+            z-index: 10
+        }
+
+        [data-footnote]::before {
+            content: attr(data-footnote);
+            border-radius: 6px;
+            background-color: rgba(100, 100, 100, .8);
+            color: #fff;
+            height: 24px;
+            line-height: 24px;
+            padding: 0 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            top: -24px;
+            left: 49px
+        }
+
+        [data-footnote]::after {
+            content: '';
+            border: 5px solid #333;
+            border-color: rgba(100, 100, 100, .8) transparent transparent transparent;
+            top: 0;
+            left: 49px
+        }
+
+        [data-footnote]:hover::after,
+        [data-footnote]:hover::before {
+            opacity: 1
+        }
+
+        [data-footnote]:hover::after,
+        [data-footnote]:hover::before {
+            transform: translate3d(-50%, -7px, 0)
+        }
+
+        #MainBox.showQR {
+            opacity: 1;
+            animation-name: showQR;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            -webkit-animation: showQR 3s ease-in-out 0s 1 normal forwards
+        }
+
+        @keyframes showQR {
+            from {
+                transform: rotateX(90deg)
+            }
+
+            8% {
+                opacity: 1;
+                transform: rotateX(-60deg)
+            }
+
+            18% {
+                opacity: 1;
+                transform: rotateX(40deg)
+            }
+
+            34% {
+                opacity: 1;
+                transform: rotateX(-28deg)
+            }
+
+            44% {
+                opacity: 1;
+                transform: rotateX(18deg)
+            }
+
+            58% {
+                opacity: 1;
+                transform: rotateX(-12deg)
+            }
+
+            72% {
+                opacity: 1;
+                transform: rotateX(9deg)
+            }
+
+            88% {
+                opacity: 1;
+                transform: rotateX(-5deg)
+            }
+
+            96% {
+                opacity: 1;
+                transform: rotateX(2deg)
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        #MainBox.hideQR {
+            opacity: 1;
+            animation-name: hideQR;
+            animation-duration: .5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            -webkit-animation: hideQR .5s ease-in-out 0s 1 normal forwards
+        }
+
+        @keyframes hideQR {
+
+            20%,
+            50% {
+                transform: scale(1.08, 1.08);
+                opacity: 1
+            }
+
+            to {
+                opacity: 0;
+                transform: rotateZ(40deg) scale(.6, .6)
+            }
+        }
+
+        .bitcoin {
+            position: absolute;
+            top: calc(50% + 9rem);
+            text-align: center;
+            left: 0;
+            right: 0
+        }
+
+        .litecoin {
+            position: absolute;
+            top: calc(50% + 9rem);
+            text-align: center;
+            left: 0;
+            right: 0
+        }
+
+        #QRBox>#title {
+            color: #969696;
+            border-bottom: 1px
+        }
+
+        #model-background {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            background-color: white;
+            position: fixed;
+            display: none
+        }
+    </style>
+    <script>$(document).ready(function () {
+            function d(b) { b && c.attr("src", b); $("#DonateText,#donateBox").addClass("blur"); e.fadeIn(300, function (b) { c.addClass("showQR") }) } var e = $("#QRBox"), c = $("#MainBox"), a = 0; $("#donateBox>li").hide(); a++; $("#BTC").show(); $("#BTC").addClass("yc"); a++; $("#LTC").show(); $("#LTC").addClass("yc"); a++; $("#PayPal a").attr("href", "https://paypal.me/tivsae"); $("#PayPal").show(); 0 == a && $("#WeChat").after('<div id="ps">\u5c1a\u672a\u5f00\u542f donate!</div>'); $("#donateBox li,#donateBox li a").css("width",
+                Math.ceil(74 + 74 * (4 - a) / a) + "px"); $("#donateBox>#LTC, #BTC").click(function (b) { $("#model-background").css({ 'display': 'block' }); document.documentElement.style.overflow = 'hidden'; document.documentElement.style.height = "100%"; b = $(this).attr("id"); "BTC" === b ? d("/img/btcqr.png") : !0; "LTC" === b ? d("/img/liteqr.png") : !0; var a = $("#title"); "BTC" === b ? (a.addClass("bitcoin"), a.text("3Mij5rZfu1sX4iXzbXHd4HQTrD8BTbf7VB")) : "LTC" === b && (a.addClass("litecoin"), a.text("MDekyA12Y8v9ScsSqe8sHoqBe7GGWxURc6")) }); c.click(function (a) { $("#model-background").css({ 'display': 'none' }); document.documentElement.style.overflow = ''; document.documentElement.style.height = ""; c.removeClass("showQR").addClass("hideQR"); setTimeout(function (a) { e.fadeOut(300, function (a) { c.removeClass("hideQR") }); $("#DonateText,#donateBox,#github").removeClass("blur") }, 600) })
+        });</script>
+    <% } %>
+    <% if(page.mathrender === true) { %>
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" crossorigin="anonymous" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
+        rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx"
+        crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener('load', () => {
+            let wait_renders = document.querySelectorAll('.mathrender');
+            wait_renders.forEach(ele => {
                 katex.render(ele.innerText, ele, {
                     throwOnError: true
                 })
             })
-})
-</script>
-<% } %>
+        })
+    </script>
+    <% } %>
 </div>

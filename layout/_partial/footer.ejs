@@ -38,27 +38,3 @@
         </div>
     <% } %>
 </footer>
-<script>    
-var element = document.querySelector("#aplayer1");
-  async function syncHand() {
-      new APlayer({
-          element: element,
-          narrow: false,
-          autoplay: false,
-          showlrc: 3,
-          mutex: true,
-          theme: "#ad7a86",
-          mode: "random",
-          listmaxheight: '263px',
-          music: [{
-              title: element.getAttribute('title'),
-              author: element.getAttribute('author'),
-              url: await getMusic(element.getAttribute('url')),
-              pic: element.getAttribute('pic'),
-              lrc: element.getAttribute('lrc')
-          }]
-      })
-  }
-  if (element !== null) { 
-      syncHand(); }
-  </script>
