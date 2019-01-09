@@ -38,3 +38,13 @@
         </div>
     <% } %>
 </footer>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    let wait_renders = document.querySelectorAll('.mathrender');
+    wait_renders.forEach(ele => {
+                katex.render(ele.innerText, ele, {
+                    throwOnError: true
+                })
+            })
+})
+</script>
