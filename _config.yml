@@ -216,6 +216,10 @@ sidebar:
             link: "/friends/"
             icon: people
             divider: false
+        随想:
+            link: "/thinking/"
+            icon: drafts
+            divider: false
         关于:
             link: "/about/"
             icon: person
