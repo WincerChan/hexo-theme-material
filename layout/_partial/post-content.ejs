@@ -8,7 +8,7 @@
             天前，其中所包含的信息很可能已经有所发展或是发生改变。</p>
     </blockquote>
     <% } %>
-    <script>document.querySelector("#outofdate>p").innerHTML = `本文最近一次更于 ${(new Date() - new Date("<%=page.updated %>")) / (1000 * 3600 * 24) | 0} 天前，其中所包含的信息很可能已经有所发展或是发生改变。`</script>
+    <script>document.querySelector("#outofdate>p").innerHTML = `本文最近一次更新于 ${(new Date() - new Date("<%=page.updated %>")) / (1000 * 3600 * 24) | 0} 天前，其中所包含的信息很可能已经有所发展或是发生改变。`</script>
     <%- page.content %>
     <% if(page.layout === 'links') { %>
     <!-- Single Timeline Page -->
