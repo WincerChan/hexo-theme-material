@@ -2,12 +2,13 @@
     <% if(theme.scheme === 'Paradox') { %>
     <% const dayofdiff = (new Date() - page.updated)/(1000*3600*24) | 0 %>
     <% if (!page.hide_outdated && dayofdiff > 90) {%>
-    <blockquote
+    <blockquote id="outofdate"
         style="margin: 1em 0 0;padding: 0.5em 1em;border-left: 3px solid #ffea00;background-color: #F5F5F5;list-style: none;">
         <p>本文最近一次更新于 <%= dayofdiff %>
             天前，其中所包含的信息很可能已经有所发展或是发生改变。</p>
     </blockquote>
     <% } %>
+    <script>document.querySelector("#outofdate>p").innerHTML = `本文最近一次更于 ${(new Date() - new Date("<%=page.updated %>")) / (1000 * 3600 * 24) | 0} 天前，其中所包含的信息很可能已经有所发展或是发生改变。`</script>
     <%- page.content %>
     <% if(page.layout === 'links') { %>
     <!-- Single Timeline Page -->
