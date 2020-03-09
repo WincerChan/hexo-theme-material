@@ -122,7 +122,7 @@ qrcode:
 #    Prettify
 #        theme: # Available value in /source/css/prettify/[theme].min.css
 prettify:
-    enable: false
+    enable: true
     theme: "github-v2"
 
 #    Hanabi (https://github.com/egoist/hanabi)
@@ -132,7 +132,7 @@ prettify:
 #                    - If `includeDefaultColors` is true, this will append colors to the color pool
 #                    - If `includeDefaultColors` is false, this will instead default color pool
 hanabi:
-    enable: true
+    enable: false
     line_number: true
     includeDefaultColors: true
     customColors: 
@@ -296,6 +296,9 @@ busuanzi:
     all_site_uv: false
     post_pv: false
     busuanzi_pure_mini_js: "https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"
+
+gaviews:
+    enable: true
 
 # Files Vendors
 # Set a CDN for the files src you want to customize. The url should with protocol.

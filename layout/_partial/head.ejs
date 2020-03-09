@@ -142,8 +142,10 @@
 
         <% if (theme.prettify.enable){ %>
             <% if ( (is_post()) ) { %>
-                <%- cssLsload({path:(theme.vendors.materialcdn + '/css/prettify.min.css'),key:'prettify_css'}) %>
-                <%- cssLsload({path:(theme.vendors.materialcdn + '/css/prettify/' + theme.prettify.theme + '.min.css'),key:'prettify_theme'}) %>
+                <style>
+                    @import url("<%-(theme.vendors.materialcdn+'/css/prettify.min.css')%>");
+                    @import url("<%-(theme.vendors.materialcdn+'/css/prettify/'+theme.prettify.theme+'.min.css')%>");
+                </style>
             <% } %>
         <% } %>
 
