@@ -165,7 +165,7 @@
         fetch(`https://api.itswincer.com/gaviews/v1/?prefix=${window.location.pathname}`)
             .then(resp => resp.json())
             .then(data => {
-                document.querySelector("gaviews_value_page_pv").innerHTML = data.total
+                document.querySelector("#gaviews_value_page_pv").innerHTML = data.total
             })
     }
     document.addEventListener("DOMContentLoaded", loadGA)
