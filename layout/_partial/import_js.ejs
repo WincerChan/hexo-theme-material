@@ -150,19 +150,12 @@
 <% } %>
 <% } %>
 
+<% if (page.layout !== 'post') {%>
+<% console.log(page.layout, page.path) %>
+<% } %>
+<% if((page.layout === 'page' ) || (page.layout === 'links') || (page.layout === 'post')) {%>
 <script>
-    (function () {
-        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
-
-        for (var i = 0; i < scriptList.length; ++i) {
-            var item = scriptList[i];
-            lsloader.runInlineScript(item.id, item.id);
-        }
-    })()
-    console.clear();
-    console.log(` %c © Wincer's Blog | Date: ${new Date().toLocaleDateString()} %c https://github.com/WincerChan/MyBlog `, "color: #fff; background-image: linear-gradient(90deg, rgb(18, 103, 144) 0%, rgb(0, 151, 167) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(18, 103, 144) 0%, rgb(194, 194, 194) 0%); padding:5px 0;")
     let loadGA = () => {
-        if (!location.pathname.startsWith("/posts/")) return
         fetch(`https://api.itswincer.com/gaviews/v1/?prefix=${window.location.pathname}`)
             .then(resp => resp.json())
             .then(data => {
@@ -170,4 +163,17 @@
             })
     }
     document.addEventListener("DOMContentLoaded", loadGA)
+</script>
+<% }%>
+<script>
+        (function () {
+            var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+            for (var i = 0; i < scriptList.length; ++i) {
+                var item = scriptList[i];
+                lsloader.runInlineScript(item.id, item.id);
+            }
+        })()
+    console.clear();
+    console.log(` %c © Wincer's Blog | Date: ${new Date().toLocaleDateString()} %c https://github.com/WincerChan/MyBlog `, "color: #fff; background-image: linear-gradient(90deg, rgb(18, 103, 144) 0%, rgb(0, 151, 167) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(18, 103, 144) 0%, rgb(194, 194, 194) 0%); padding:5px 0;")
 </script>
