@@ -23,6 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="referrer" content="same-origin">
 
     <!-- Title -->
     <%
@@ -51,7 +52,7 @@
     %>
     <title>
         <% if (title) { %>
-            <%= title + ' · ' %>
+        <%= title + ' · ' %>
         <% } %>
         <%= config.title %>
     </title>
@@ -60,9 +61,11 @@
     <link rel="icon shortcut" type="image/ico" href="<%= url_for(theme.head.favicon) %>">
     <link rel="icon" href="<%= url_for(theme.head.high_res_favicon) %>">
 
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="<% if(page.description) { %><%= page.description %><% } else if(page.excerpt){ %><%= strip_html(page.excerpt).replace(/^s*/, '').replace(/s*$/, '') %><% } else if (config.description){ %><%= config.description %><% } %>">
-    <meta name="keywords" content="<%= theme.head.keywords %><% if(page.tags && page.tags.each) { page.tags.each(function(tag) { %><%- ',' + tag.name %><% })} %>">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" itemprop="description"
+        content="<% if(page.description) { %><%= page.description %><% } else if(page.excerpt){ %><%= strip_html(page.excerpt).replace(/^s*/, '').replace(/s*$/, '') %><% } else if (config.description){ %><%= config.description %><% } %>">
+    <meta name="keywords"
+        content="<%= theme.head.keywords %><% if(page.tags && page.tags.each) { page.tags.each(function(tag) { %><%- ',' + tag.name %><% })} %>">
     <meta name="theme-color" content="<%= theme.uiux.android_chrome_color %>">
 
     <!-- WebAPP Icons -->
@@ -76,17 +79,19 @@
     <link rel="apple-touch-icon" href="<%= url_for(theme.head.apple_touch_icon) %>">
 
     <!-- Site Verification -->
-    <% if(theme.head.site_verification.google) { %><meta name="google-site-verification" content="<%= theme.head.site_verification.google %>" /><% } %>
-    <% if(theme.head.site_verification.baidu) { %><meta name="baidu-site-verification" content="<%= theme.head.site_verification.baidu %>" /><% } %>
+    <% if(theme.head.site_verification.google) { %>
+    <meta name="google-site-verification" content="<%= theme.head.site_verification.google %>" /><% } %>
+    <% if(theme.head.site_verification.baidu) { %>
+    <meta name="baidu-site-verification" content="<%= theme.head.site_verification.baidu %>" /><% } %>
 
     <!-- RSS -->
     <% if(theme.url.rss) { %>
-        <% if(config.feed.type == "atom"){ %>
-            <link rel=alternate type="application/atom+xml" href="<%= theme.url.rss || '#' %>">
-        <% } else if(config.feed.type == "rss2") { %>
-            <link rel=alternate type="application/rss+xml" href="<%= theme.url.rss || '#' %>">
-        <% } else { %>
-        <% } %>
+    <% if(config.feed.type == "atom"){ %>
+    <link rel=alternate type="application/atom+xml" href="<%= theme.url.rss || '#' %>">
+    <% } else if(config.feed.type == "rss2") { %>
+    <link rel=alternate type="application/rss+xml" href="<%= theme.url.rss || '#' %>">
+    <% } else { %>
+    <% } %>
     <% } %>
 
     <!-- The Open Graph protocol -->
@@ -94,12 +99,14 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="<% if (title) { %><%= title %> · <% } %><%= config.title %>">
     <meta property="og:image" content="<%= url_for(theme.head.high_res_favicon) %>">
-    <meta property="og:description" content="<% if(page.description) { %><%= page.description %><% } else if(page.excerpt){ %><%= strip_html(page.excerpt).replace(/^s*/, '').replace(/s*$/, '') %><% } else if (config.description){ %><%= config.description %><% } %>">
-    <% if(page.tags && page.tags.each) { page.tags.each(function(tag){ %><meta property="og:article:tag" content="<%= tag.name %>"> <% })} %>
+    <meta property="og:description"
+        content="<% if(page.description) { %><%= page.description %><% } else if(page.excerpt){ %><%= strip_html(page.excerpt).replace(/^s*/, '').replace(/s*$/, '') %><% } else if (config.description){ %><%= config.description %><% } %>">
+    <% if(page.tags && page.tags.each) { page.tags.each(function(tag){ %>
+    <meta property="og:article:tag" content="<%= tag.name %>"> <% })} %>
 
     <% if( (is_post()) ) { %>
-        <meta property="article:published_time" content="<%= date(page.date, 'YYYY-MM-DDTHH:MM:ss.SSSZ') %>">
-        <meta property="article:modified_time" content="<%= date(page.updated, 'YYYY-MM-DDTHH:MM:ss.SSSZ') %>">
+    <meta property="article:published_time" content="<%= date(page.date, 'YYYY-MM-DDTHH:MM:ss.SSSZ') %>">
+    <meta property="article:modified_time" content="<%= date(page.updated, 'YYYY-MM-DDTHH:MM:ss.SSSZ') %>">
     <% } %>
 
     <!-- The Twitter Card protocol -->
@@ -107,13 +114,13 @@
 
     <!-- Add canonical link for SEO -->
     <% if( (page.current === 1) && (is_home()) ) { %>
-        <link rel="canonical" href="<%- config.url %>" />
+    <link rel="canonical" href="<%- config.url %>" />
     <% } else { %>
-        <link rel="canonical" href="<%- config.url + url_for(path).slice(0, -10) %>" />
+    <link rel="canonical" href="<%- config.url + url_for(path).slice(0, -10) %>" />
     <% } %>
     <!-- Structured-data for SEO -->
     <% if(theme.head.structured_data === true) { %>
-        <%- partial('_partial/structured-data') %>
+    <%- partial('_partial/structured-data') %>
     <% } %>
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -133,86 +140,89 @@
     <![endif]-->
 
     <!-- Import lsloader -->
-    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{}};lsloader.removeLS=function(b){try{localStorage.removeItem(b)}catch(a){}};lsloader.setLS=function(b,a){try{localStorage.setItem(b,a)}catch(c){}};lsloader.getLS=function(b){var a="";try{a=localStorage.getItem(b)}catch(c){a=""}return a};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{for(var b=[],a=0;a<localStorage.length;a++)b.push(localStorage.key(a));b.forEach(function(a){-1===lsloader.getLS(a).indexOf(versionString)&&lsloader.removeLS(a)})}catch(c){}};lsloader.clean();lsloader.load=function(b,a,c,e){"boolean"===typeof c&&(e=c,c=void 0);e=e||!1;c=c||function(){};var d;(d=this.getLS(b))&&-1===d.indexOf(versionString)?(this.removeLS(b),this.requestResource(b,a,c,e)):d?d.split(versionString)[0]!=a?(console.log("reload:"+a),this.removeLS(b),this.requestResource(b,a,c,e)):(d=d.split(versionString)[1],e?(this.jsRunSequence.push({name:b,code:d}),this.runjs(a,b,d)):(document.getElementById(b).appendChild(document.createTextNode(d)),c())):this.requestResource(b,a,c,e)};lsloader.requestResource=function(b,a,c,e){var d=this;e?this.iojs(a,b,function(a,b,c){d.setLS(b,a+versionString+c);d.runjs(a,b,c)}):this.iocss(a,b,function(c){document.getElementById(b).appendChild(document.createTextNode(c));d.setLS(b,a+versionString+c)},c)};lsloader.iojs=function(b,a,c){var e=this;e.jsRunSequence.push({name:a,code:""});try{var d=new XMLHttpRequest;d.open("get",b,!0);d.onreadystatechange=function(){4==d.readyState&&((200<=d.status&&300>d.status||304==d.status)&&""!=d.response?c(b,a,d.response):e.jsfallback(b,a))};d.send(null)}catch(f){e.jsfallback(b,a)}};lsloader.runjs=function(b,a,c){if(a&&c)for(var e in this.jsRunSequence)this.jsRunSequence[e].name==a&&(this.jsRunSequence[e].code=c);if(this.jsRunSequence[0]&&this.jsRunSequence[0].code&&"failed"!=this.jsRunSequence[0].status)b=document.createElement("script"),b.appendChild(document.createTextNode(this.jsRunSequence[0].code)),b.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(b),this.jsRunSequence.shift(),0<this.jsRunSequence.length&&this.runjs();else if(this.jsRunSequence[0]&&"failed"==this.jsRunSequence[0].status){var d=this;b=document.createElement("script");b.src=this.jsRunSequence[0].path;b.type="text/javascript";this.jsRunSequence[0].status="loading";b.onload=function(){d.jsRunSequence.shift();0<d.jsRunSequence.length&&d.runjs()};document.body.appendChild(b)}};lsloader.jsfallback=function(b,a){if(!this.jsnamemap[a]){this.jsnamemap[a]=a;for(var c in this.jsRunSequence)this.jsRunSequence[c].name==a&&(this.jsRunSequence[c].code="",this.jsRunSequence[c].status="failed",this.jsRunSequence[c].path=b);this.runjs()}};lsloader.cssfallback=function(b,a,c){this.cssnamemap[a]||(this.cssnamemap[a]=1,a=document.createElement("link"),a.type="text/css",a.href=b,a.rel="stylesheet",a.onload=a.onerror=c,b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b))};lsloader.runInlineScript=function(b,a){a=document.getElementById(a).innerText;this.jsRunSequence.push({name:b,code:a});this.runjs()}})();</script>
+    <script>(function () { window.lsloader = { jsRunSequence: [], jsnamemap: {} }; lsloader.removeLS = function (b) { try { localStorage.removeItem(b) } catch (a) { } }; lsloader.setLS = function (b, a) { try { localStorage.setItem(b, a) } catch (c) { } }; lsloader.getLS = function (b) { var a = ""; try { a = localStorage.getItem(b) } catch (c) { a = "" } return a }; versionString = "/*" + (window.materialVersion || "unknownVersion") + "*/"; lsloader.clean = function () { try { for (var b = [], a = 0; a < localStorage.length; a++)b.push(localStorage.key(a)); b.forEach(function (a) { -1 === lsloader.getLS(a).indexOf(versionString) && lsloader.removeLS(a) }) } catch (c) { } }; lsloader.clean(); lsloader.load = function (b, a, c, e) { "boolean" === typeof c && (e = c, c = void 0); e = e || !1; c = c || function () { }; var d; (d = this.getLS(b)) && -1 === d.indexOf(versionString) ? (this.removeLS(b), this.requestResource(b, a, c, e)) : d ? d.split(versionString)[0] != a ? (console.log("reload:" + a), this.removeLS(b), this.requestResource(b, a, c, e)) : (d = d.split(versionString)[1], e ? (this.jsRunSequence.push({ name: b, code: d }), this.runjs(a, b, d)) : (document.getElementById(b).appendChild(document.createTextNode(d)), c())) : this.requestResource(b, a, c, e) }; lsloader.requestResource = function (b, a, c, e) { var d = this; e ? this.iojs(a, b, function (a, b, c) { d.setLS(b, a + versionString + c); d.runjs(a, b, c) }) : this.iocss(a, b, function (c) { document.getElementById(b).appendChild(document.createTextNode(c)); d.setLS(b, a + versionString + c) }, c) }; lsloader.iojs = function (b, a, c) { var e = this; e.jsRunSequence.push({ name: a, code: "" }); try { var d = new XMLHttpRequest; d.open("get", b, !0); d.onreadystatechange = function () { 4 == d.readyState && ((200 <= d.status && 300 > d.status || 304 == d.status) && "" != d.response ? c(b, a, d.response) : e.jsfallback(b, a)) }; d.send(null) } catch (f) { e.jsfallback(b, a) } }; lsloader.runjs = function (b, a, c) { if (a && c) for (var e in this.jsRunSequence) this.jsRunSequence[e].name == a && (this.jsRunSequence[e].code = c); if (this.jsRunSequence[0] && this.jsRunSequence[0].code && "failed" != this.jsRunSequence[0].status) b = document.createElement("script"), b.appendChild(document.createTextNode(this.jsRunSequence[0].code)), b.type = "text/javascript", document.getElementsByTagName("head")[0].appendChild(b), this.jsRunSequence.shift(), 0 < this.jsRunSequence.length && this.runjs(); else if (this.jsRunSequence[0] && "failed" == this.jsRunSequence[0].status) { var d = this; b = document.createElement("script"); b.src = this.jsRunSequence[0].path; b.type = "text/javascript"; this.jsRunSequence[0].status = "loading"; b.onload = function () { d.jsRunSequence.shift(); 0 < d.jsRunSequence.length && d.runjs() }; document.body.appendChild(b) } }; lsloader.jsfallback = function (b, a) { if (!this.jsnamemap[a]) { this.jsnamemap[a] = a; for (var c in this.jsRunSequence) this.jsRunSequence[c].name == a && (this.jsRunSequence[c].code = "", this.jsRunSequence[c].status = "failed", this.jsRunSequence[c].path = b); this.runjs() } }; lsloader.cssfallback = function (b, a, c) { this.cssnamemap[a] || (this.cssnamemap[a] = 1, a = document.createElement("link"), a.type = "text/css", a.href = b, a.rel = "stylesheet", a.onload = a.onerror = c, b = document.getElementsByTagName("script")[0], b.parentNode.insertBefore(a, b)) }; lsloader.runInlineScript = function (b, a) { a = document.getElementById(a).innerText; this.jsRunSequence.push({ name: b, code: a }); this.runjs() } })();</script>
     <!-- Import queue -->
-    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+    <script>function Queue() { this.dataStore = []; this.offer = b; this.poll = d; this.execNext = a; this.debug = false; this.startDebug = c; function b(e) { if (this.debug) { console.log("Offered a Queued Function.") } if (typeof e === "function") { this.dataStore.push(e) } else { console.log("You must offer a function.") } } function d() { if (this.debug) { console.log("Polled a Queued Function.") } return this.dataStore.shift() } function a() { var e = this.poll(); if (e !== undefined) { if (this.debug) { console.log("Run a Queued Function.") } e() } } function c() { this.debug = true } } var queue = new Queue();</script>
 
     <!-- Import CSS -->
     <% if(theme.vendors.materialcdn) { %>
 
-        <% if (theme.prettify.enable){ %>
-            <% if ( (is_post()) ) { %>
-                <style>
-                    @import url("<%-(theme.vendors.materialcdn+'/css/prettify.min.css')%>");
-                    @import url("<%-(theme.vendors.materialcdn+'/css/prettify/'+theme.prettify.theme+'.min.css')%>");
-                </style>
-            <% } %>
-        <% } %>
+    <% if (theme.prettify.enable){ %>
+    <% if ( (is_post()) ) { %>
+    <style>
+        @import url("<%-(theme.vendors.materialcdn+'/css/prettify.min.css')%>");
+        @import url("<%-(theme.vendors.materialcdn+'/css/prettify/'+theme.prettify.theme+'.min.css')%>");
+    </style>
+    <% } %>
+    <% } %>
 
     <% } else { %>
-        <%- cssLsload({path:('css/material.min.css'),key:'material_css'}) %>
-        <%- cssLsload({path:('css/style.min.css'),key:'style_css'}) %>
+    <%- cssLsload({path:('css/material.min.css'),key:'material_css'}) %>
+    <%- cssLsload({path:('css/style.min.css'),key:'style_css'}) %>
 
-        <% if (theme.prettify.enable){ %>
-            <% if ( (is_post()) ) { %>
-                <%- cssLsload({path:('css/prettify.min.css'),key:'prettify_css'}) %>
-                <%- cssLsload({path:('css/prettify/' + theme.prettify.theme + '.min.css'),key:'prettify_theme'}) %>
-            <% } %>
-        <% } %>
+    <% if (theme.prettify.enable){ %>
+    <% if ( (is_post()) ) { %>
+    <%- cssLsload({path:('css/prettify.min.css'),key:'prettify_css'}) %>
+    <%- cssLsload({path:('css/prettify/' + theme.prettify.theme + '.min.css'),key:'prettify_theme'}) %>
+    <% } %>
+    <% } %>
 
     <% } %>
 
     <% if(theme.scheme === 'Isolation') { %>
-        <% if(theme.vendors.fontawesome) { %>
-            <link rel="stylesheet" href="<%= theme.vendors.fontawesome %>">
-        <% } else if(theme.vendors.materialcdn) { %>
-            <link rel="stylesheet" href="<%= theme.vendors.materialcdn %>/css/fontawesome.min.css">
-        <% } else { %>
-            <link rel="stylesheet" href="<%= url_for('css/fontawesome.min.css') %>">
-        <% } %>
+    <% if(theme.vendors.fontawesome) { %>
+    <link rel="stylesheet" href="<%= theme.vendors.fontawesome %>">
+    <% } else if(theme.vendors.materialcdn) { %>
+    <link rel="stylesheet" href="<%= theme.vendors.materialcdn %>/css/fontawesome.min.css">
+    <% } else { %>
+    <link rel="stylesheet" href="<%= url_for('css/fontawesome.min.css') %>">
+    <% } %>
     <% } %>
 
     <%- partial('_partial/config_css') %>
 
     <!-- Import jQuery -->
     <% if(theme.vendors.jquery) { %>
-        <%- jsLsload({path:(theme.vendors.jquery),key:'jq_js'}) %>
+    <%- jsLsload({path:(theme.vendors.jquery),key:'jq_js'}) %>
     <% } else if(theme.vendors.materialcdn) { %>
-        <%- jsLsload({path:(theme.vendors.materialcdn + '/js/jquery.min.js'),key:'jq_js'}) %>
+    <%- jsLsload({path:(theme.vendors.materialcdn + '/js/jquery.min.js'),key:'jq_js'}) %>
     <% } else { %>
-        <%- jsLsload({path:('js/jquery.min.js'),key:'jq_js'}) %>
+    <%- jsLsload({path:('js/jquery.min.js'),key:'jq_js'}) %>
     <% } %>
 
 
     <!-- Analytics -->
     <% if(theme.analytics.google_site_id) { %>
-        <%- partial('_widget/analytics/google-analytics') %>
+    <%- partial('_widget/analytics/google-analytics') %>
     <% } %>
     <% if(theme.analytics.baidu_site_id) { %>
-        <%- partial('_widget/analytics/baidu-analytics') %>
+    <%- partial('_widget/analytics/baidu-analytics') %>
     <% } %>
     <% if(theme.analytics.cnzz_site_id) { %>
-        <%- partial('_widget/analytics/cnzz-analytics') %>
+    <%- partial('_widget/analytics/cnzz-analytics') %>
     <% } %>
 
     <!-- Custom Head -->
     <% if (site.data.head) { %>
-        <% for (var i in site.data.head) { %>
-            <%- site.data.head[i] %>
-        <% } %>
+    <% for (var i in site.data.head) { %>
+    <%- site.data.head[i] %>
+    <% } %>
     <% } %>
     <!-- Remove Referrer -->
     <% if (page.noreferrer === true) { %>
-        <meta name="referrer" content="never">
-        <meta name="referrer" content="no-referrer">
+    <meta name="referrer" content="never">
+    <meta name="referrer" content="no-referrer">
     <% } %>
 
 </head>
 
 
 <div>
-<% if(page.mathrender === true) { %>
-    <link href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" crossorigin="anonymous" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-<% } %>
+    <% if(page.mathrender === true) { %>
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" crossorigin="anonymous"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"
+        integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx"
+        crossorigin="anonymous"></script>
+    <% } %>
 </div>
